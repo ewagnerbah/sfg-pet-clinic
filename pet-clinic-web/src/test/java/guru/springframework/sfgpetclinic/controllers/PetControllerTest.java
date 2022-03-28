@@ -71,17 +71,17 @@ class PetControllerTest {
                 .andExpect(view().name("pets/createOrUpdatePetForm"));
     }
 
-    // @Test
-    // void processCreationForm() throws Exception {
-    //     when(ownerService.findById(anyLong())).thenReturn(owner);
-    //     when(petTypeService.findAll()).thenReturn(petTypes);
+    @Test
+    void processCreationForm() throws Exception {
+        when(ownerService.findById(anyLong())).thenReturn(owner);
+        when(petTypeService.findAll()).thenReturn(petTypes);
 
-    //     mockMvc.perform(post("/owners/1/pets/new"))
-    //             .andExpect(status().is3xxRedirection())
-    //             .andExpect(view().name("redirect:/owners/1"));
+        mockMvc.perform(post("/owners/1/pets/new"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/owners/1"));
 
-    //     verify(petService).save(any());
-    // }
+        verify(petService).save(any());
+    }
 
     // @Test
     // void initUpdateForm() throws Exception {
