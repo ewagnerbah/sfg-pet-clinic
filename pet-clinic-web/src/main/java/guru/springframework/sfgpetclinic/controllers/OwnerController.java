@@ -2,10 +2,11 @@ package guru.springframework.sfgpetclinic.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -78,7 +79,7 @@ public class OwnerController {
     }
 
     @PostMapping("/new")
-    public String processCreationForm(@Validated Owner owner, BindingResult result){
+    public String processCreationForm(@Valid Owner owner, BindingResult result){
         if(result.hasErrors()){
             return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
         } else {
@@ -94,7 +95,7 @@ public class OwnerController {
     }
 
     @PostMapping("/{ownerId}/edit")
-    public String processUpdateOwnerForm(@Validated Owner owner, BindingResult result, @PathVariable Long ownerId){
+    public String processUpdateOwnerForm(@Valid Owner owner, BindingResult result, @PathVariable Long ownerId){
         if(result.hasErrors()){
             return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
         } else {
